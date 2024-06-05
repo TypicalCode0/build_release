@@ -42,13 +42,14 @@ jobs:
         draft: false
         prerelease: false
 
-    - name: Upload Release Asset (.pyc files)
-      id: upload_release_asset_pyc
+    - name: Upload Release Asset (Python Package)
+      id: upload_release_asset_python
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/*.pyc  # Путь к .pyc файлам
-        asset_name: my_project-pyc-files.zip  # Имя архива, в который будут упакованы .pyc файлы
-        asset_content_type: application/zip  # MIME-тип архива
+        asset_path: my_project-0.1.0.tar.gz
+        asset_name: my_project-0.1.0.tar.gz
+        asset_content_type: application/gzip
+
