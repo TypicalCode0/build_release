@@ -3,7 +3,14 @@ name: Build and Release
 on:
   push:
     tags:
-      - 'v*.*.*'  # Слушаем теги версии, например, v1.0.0
+      - 'v*.*.*'
+    branches:
+      - main
+  pull_request:
+    tags:
+      - 'v*.*.*'
+    branches:
+      - main
 
 jobs:
   build:
