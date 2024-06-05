@@ -49,6 +49,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/*.pyc  # Путь к .pyc файлам
+        asset_path: ./__pycache__/*.pyc  # Путь к .pyc файлам
         asset_name: my_project-pyc-files.zip  # Имя архива, в который будут упакованы .pyc файлы
         asset_content_type: application/zip  # MIME-тип архива
