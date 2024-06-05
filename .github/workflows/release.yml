@@ -29,7 +29,7 @@ jobs:
 
     - name: Build project
       run: |
-        python -m setup
+        python -m setup.py
 
     - name: Create Release
       id: create_release
