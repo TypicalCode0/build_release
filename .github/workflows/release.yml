@@ -49,8 +49,3 @@ jobs:
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/my_project-0.1.0.tar.gz  # Укажите правильный путь к вашему файлу
-        asset_name: my_project-0.1.0.tar.gz
-        asset_content_type: application/gzip
