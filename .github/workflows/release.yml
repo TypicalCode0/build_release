@@ -30,7 +30,12 @@ jobs:
     - name: Build project
       run: |
         python -m compileall .
-        mv __pycache__/*.pyc .
+
+    - name: Archive .pyc files
+      uses: actions/upload-artifact@v2
+      with:
+        name: pyc-files
+        path: __pycache__/*.pyc  # Загружает все .pyc файлы в артефакт
 
     - name: Create Release
       id: create_release
@@ -42,4 +47,14 @@ jobs:
         release_name: Release ${{ github.run_number }}
         draft: false
         prerelease: false
+
+    - name: Upload release asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ runner.workspace }}/pyc-files/*.pyc  # Путь к .pyc файлам
+        asset_name: pyc-files.zip  # Имя архива, который будет загружен
+        asset_content_type: application/zip
 
