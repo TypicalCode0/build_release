@@ -1,13 +1,5 @@
-from setuptools import setup, find_packages
+def main():
+    print("Hello, World!")
 
-setup(
-    name='my_project',
-    version='0.1.0',
-    packages=find_packages(where='src'),
-    package_dir={'': 'src'},
-    entry_points={
-        'console_scripts': [
-            'my_project=main:main',
-        ],
-    },
-)
+if __name__ == "__main__":
+    main()
